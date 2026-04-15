@@ -23,29 +23,63 @@ body:
     validations:
       required: true
   - type: input
-    id: website
-    attributes:
-      label: 公式サイトURL
-    validations:
-      required: false
-  - type: input
     id: category
     attributes:
       label: カテゴリ
       description: "自由記述。例: 博物館、美術館、ギャラリー、資料館、公文書館"
     validations:
       required: true
-  - type: textarea
-    id: reason
+  - type: dropdown
+    id: status
     attributes:
-      label: 含めるべき理由
-      description: 展覧会形式で公開を行っている根拠
+      label: 営業ステータス
+      description: "現在も営業しているならopen、閉業ならclosed、移転済みならmoved、不明ならunknown"
+      options:
+        - open
+        - closed
+        - moved
+        - unknown
+      default: 0
     validations:
       required: true
   - type: input
-    id: source
+    id: website-url
     attributes:
-      label: 出典
-      description: 公式サイトURLや書籍タイトルなど(任意)
+      label: 公式サイトURL
+    validations:
+      required: false
+  - type: input
+    id: genres
+    attributes:
+      label: 取り扱いジャンル
+      description: "複数ある場合はカンマ区切りで(例: 近現代美術, 写真)"
+    validations:
+      required: false
+  - type: input
+    id: related-entities
+    attributes:
+      label: 関連する組織・人物
+      description: "運営法人、設立者など。複数ある場合はカンマ区切りで"
+    validations:
+      required: false
+  - type: input
+    id: opened-on
+    attributes:
+      label: 開業日
+      description: "可能ならYYYY-MM-DD形式。不明な場合は「明治時代」「1980年代」など自由記述可"
+    validations:
+      required: false
+  - type: input
+    id: closed-on
+    attributes:
+      label: 閉業日
+      description: "閉業/移転している場合のみ。形式は開業日と同様"
+    validations:
+      required: false
+  - type: textarea
+    id: notes
+    attributes:
+      label: 備考
+      description: "出典URL、書籍タイトル、判断根拠、その他補足情報を自由にご記入ください"
     validations:
       required: false

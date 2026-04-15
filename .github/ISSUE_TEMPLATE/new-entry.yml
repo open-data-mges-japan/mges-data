@@ -19,7 +19,7 @@ body:
     id: address
     attributes:
       label: 住所
-      description: 都道府県名から始まる完全な住所(例: 東京都千代田区一番町1-1)
+      description: "都道府県名から始まる完全な住所(例: 東京都千代田区一番町1-1)"
     validations:
       required: true
   - type: input

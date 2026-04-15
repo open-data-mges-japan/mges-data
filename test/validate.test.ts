@@ -9,7 +9,6 @@ import { readFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import Ajv from "ajv";
-import addFormats from "ajv-formats";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = resolve(__dirname, "..", "mges.schema.json");
@@ -24,7 +23,6 @@ const schema = JSON.parse(readFileSync(schemaPath, "utf-8"));
  */
 function createValidator() {
   const ajv = new Ajv({ allErrors: true });
-  addFormats(ajv);
   return ajv.compile(schema);
 }
 

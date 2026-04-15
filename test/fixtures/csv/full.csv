@@ -1,0 +1,2 @@
+﻿id,name,postalCode,address,status,websiteUrl,lat,lng,openedOn,closedOn,movedToId,category,genres,relatedEntities,notes,sources
+1,さぬき市公文書館,769-2396,香川県さぬき市寒川町石田東甲425,open,https://example.org/,34.31,134.18,2003,,,公文書館,公文書,さぬき市,テスト補足,"公式サイト, さぬき市史"

@@ -1,0 +1,49 @@
+[
+  {
+    "id": "1",
+    "name": "さぬき市公文書館",
+    "postalCode": "769-2396",
+    "address": "香川県さぬき市寒川町石田東甲425 寒川第2庁舎内",
+    "websiteUrl": "https://www.city.sanuki.kagawa.jp/executive/machidukuri/kobunshokan",
+    "category": "公文書館",
+    "genres": ["公文書"],
+    "relatedEntities": ["さぬき市"],
+    "notes": "テスト用の補足",
+    "lat": 34.31,
+    "lng": 134.18,
+    "status": "open",
+    "openedOn": "2003",
+    "sources": [
+      "https://example.com/source1",
+      "「さぬき市史」2010年版"
+    ]
+  },
+  {
+    "id": "2",
+    "name": "移転前の旧館",
+    "postalCode": "102-0082",
+    "address": "東京都千代田区一番町1-1",
+    "category": "博物館",
+    "status": "moved",
+    "movedToId": "3",
+    "closedOn": "2020-03-31"
+  },
+  {
+    "id": "3",
+    "name": "移転後の新館",
+    "postalCode": "106-0032",
+    "address": "東京都港区六本木1-1-1",
+    "category": "博物館",
+    "status": "open",
+    "openedOn": "2020-04-01"
+  },
+  {
+    "id": "4",
+    "name": "歴史的施設の例",
+    "postalCode": "540-0001",
+    "address": "大阪府大阪市中央区1-1-1",
+    "category": "資料館",
+    "status": "unknown",
+    "openedOn": "明治時代"
+  }
+]

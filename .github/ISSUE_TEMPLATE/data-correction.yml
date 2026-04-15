@@ -1,0 +1,41 @@
+name: データ誤り報告
+description: 既存エントリの誤情報を報告します
+labels: ["data-correction"]
+body:
+  - type: input
+    id: target-id
+    attributes:
+      label: 対象ID
+      description: mges.json内の対象エントリのid
+      placeholder: "1"
+    validations:
+      required: true
+  - type: input
+    id: field
+    attributes:
+      label: 誤っている項目
+      description: "例: name, address"
+      placeholder: name
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: 修正案
+      description: 正しい内容を記載してください
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: 出典URL
+      description: 修正の根拠となる情報源
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: 補足
+      description: 任意
+    validations:
+      required: false

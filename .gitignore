@@ -1,0 +1,7 @@
+# 内部用の作業ファイル(公開しない)
+docs/
+CLAUDE.md
+
+node_modules/
+npm-debug.log*
+.DS_Store

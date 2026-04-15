@@ -1,0 +1,51 @@
+name: 新規エントリ提案
+description: 博物館・ギャラリー・展示施設の追加を提案します
+labels: ["new-entry"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: 施設名
+    validations:
+      required: true
+  - type: input
+    id: postal-code
+    attributes:
+      label: 郵便番号
+      description: "###-####形式(例: 102-0082)"
+    validations:
+      required: true
+  - type: input
+    id: address
+    attributes:
+      label: 住所
+      description: 都道府県名から始まる完全な住所(例: 東京都千代田区一番町1-1)
+    validations:
+      required: true
+  - type: input
+    id: website
+    attributes:
+      label: 公式サイトURL
+    validations:
+      required: false
+  - type: input
+    id: category
+    attributes:
+      label: カテゴリ
+      description: "自由記述。例: 博物館、美術館、ギャラリー、資料館、公文書館"
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: 含めるべき理由
+      description: 展覧会形式で公開を行っている根拠
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: 出典
+      description: 公式サイトURLや書籍タイトルなど(任意)
+    validations:
+      required: false

@@ -5,7 +5,7 @@
   "license": "CC0-1.0",
   "type": "module",
   "scripts": {
-    "validate": "tsx validate.ts",
+    "validate": "tsx scripts/validate.ts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "check": "npm run typecheck && npm run validate && npm test"

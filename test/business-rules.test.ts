@@ -4,7 +4,7 @@
  */
 
 import { describe, it, expect } from "vitest";
-import { checkBusinessRules, type Entry } from "../business-rules";
+import { checkBusinessRules, type Entry } from "../scripts/business-rules";
 
 describe("checkBusinessRules", () => {
   it("正常データではエラーを返さない", () => {

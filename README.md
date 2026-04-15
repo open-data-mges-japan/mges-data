@@ -8,9 +8,9 @@
 
 - `mges.csv`: データ本体(CSV、UTF-8 BOM付き、RFC 4180準拠)
 - `mges.schema.json`: データを検証するJSON Schema(CSVをパース・型変換したオブジェクト配列に対する論理契約)
-- `validate.ts`: 検証スクリプト(CSVパース + JSON Schema検証 + 後述のビジネスルール検証)
-- `parse-csv.ts`: CSVパースユーティリティ
-- `business-rules.ts`: クロスエントリのビジネスルール実装(ID重複検出、movedToId参照整合性)
+- `scripts/validate.ts`: 検証スクリプト(CSVパース + JSON Schema検証 + 後述のビジネスルール検証)
+- `scripts/parse-csv.ts`: CSVパースユーティリティ
+- `scripts/business-rules.ts`: クロスエントリのビジネスルール実装(ID重複検出、movedToId参照整合性)
 
 ## データの取得と利用
 

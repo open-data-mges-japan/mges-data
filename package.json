@@ -5,7 +5,7 @@
   "license": "CC0-1.0",
   "type": "module",
   "scripts": {
-    "validate": "tsx validate.ts",
+    "validate": "tsx scripts/validate.ts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "check": "npm run typecheck && npm run validate && npm test"
@@ -13,7 +13,6 @@
   "devDependencies": {
     "@types/node": "^20.19.39",
     "ajv": "^8.17.1",
-    "ajv-formats": "^3.0.1",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "vitest": "^3.2.4"

@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://mges.example.org/schema/mges.json",
   "title": "MGES Japan dataset",
-  "description": "日本国内の博物館、ギャラリー、展示施設のオープンデータ",
+  "description": "日本国内の博物館、ギャラリー、展示施設のオープンデータ(mges.csvをパース・型変換して得られるオブジェクト配列に対する論理スキーマ)",
   "type": "array",
   "items": {
     "type": "object",
@@ -32,8 +32,8 @@
       },
       "websiteUrl": {
         "type": "string",
-        "format": "uri",
-        "description": "公式サイトURL"
+        "pattern": "^https?://.+",
+        "description": "公式サイトURL(http:// または https:// で始まる)"
       },
       "category": {
         "type": "string",
@@ -41,20 +41,14 @@
         "description": "施設のカテゴリ(自由記述、例: 博物館、美術館、ギャラリー、資料館、公文書館)"
       },
       "genres": {
-        "type": "array",
-        "items": {
-          "type": "string",
-          "minLength": 1
-        },
-        "description": "取り扱いジャンル(複数可)"
+        "type": "string",
+        "minLength": 1,
+        "description": "取り扱いジャンル(自由記述)"
       },
       "relatedEntities": {
-        "type": "array",
-        "items": {
-          "type": "string",
-          "minLength": 1
-        },
-        "description": "関連する組織・人物(複数可)"
+        "type": "string",
+        "minLength": 1,
+        "description": "関連する組織・人物(自由記述)"
       },
       "notes": {
         "type": "string",
@@ -89,12 +83,9 @@
         "description": "閉業日または最終営業日。可能ならYYYY-MM-DD/YYYY-MM/YYYYのISO 8601形式が望ましいが、特定できない場合は自由記述可"
       },
       "sources": {
-        "type": "array",
-        "items": {
-          "type": "string",
-          "minLength": 1
-        },
-        "description": "情報の出典(自由記述)。URL、書籍タイトル、その他参考情報など任意の文字列を入れられる"
+        "type": "string",
+        "minLength": 1,
+        "description": "情報の出典(自由記述)。URL、書籍タイトル、その他参考情報など任意の形式で記載"
       }
     },
     "dependencies": {

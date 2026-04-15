@@ -1,0 +1,10 @@
+[
+  {
+    "id": "1",
+    "name": "移転したが移転先ID未指定",
+    "postalCode": "102-0082",
+    "address": "東京都千代田区1-1",
+    "category": "博物館",
+    "status": "moved"
+  }
+]

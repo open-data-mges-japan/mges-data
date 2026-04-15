@@ -1,0 +1,10 @@
+[
+  {
+    "id": "1",
+    "name": "テスト施設",
+    "postalCode": "102-0082",
+    "address": "東京都千代田区一番町1-1",
+    "category": "博物館",
+    "status": "open"
+  }
+]

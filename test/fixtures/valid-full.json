@@ -6,17 +6,14 @@
     "address": "香川県さぬき市寒川町石田東甲425 寒川第2庁舎内",
     "websiteUrl": "https://www.city.sanuki.kagawa.jp/executive/machidukuri/kobunshokan",
     "category": "公文書館",
-    "genres": ["公文書"],
-    "relatedEntities": ["さぬき市"],
+    "genres": "公文書",
+    "relatedEntities": "さぬき市",
     "notes": "テスト用の補足",
     "lat": 34.31,
     "lng": 134.18,
     "status": "open",
     "openedOn": "2003",
-    "sources": [
-      "https://example.com/source1",
-      "「さぬき市史」2010年版"
-    ]
+    "sources": "公式サイト, 「さぬき市史」2010年版"
   },
   {
     "id": "2",
@@ -43,7 +40,8 @@
     "postalCode": "540-0001",
     "address": "大阪府大阪市中央区1-1-1",
     "category": "資料館",
-    "status": "unknown",
-    "openedOn": "明治時代"
+    "status": "closed",
+    "openedOn": "明治時代",
+    "closedOn": "昭和初期"
   }
 ]

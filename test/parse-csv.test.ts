@@ -20,7 +20,7 @@ describe("parseCsvFile", () => {
       name: "テスト施設",
       postalCode: "102-0082",
       address: "東京都千代田区1-1",
-      status: "open",
+      status: "営業",
       category: "博物館",
     });
   });
@@ -48,7 +48,7 @@ describe("parseCsvFile", () => {
       id: "1",
       name: "さぬき市公文書館",
       postalCode: "769-2396",
-      status: "open",
+      status: "営業",
       category: "公文書館",
       genres: "公文書",
       relatedEntities: "さぬき市",

@@ -11,7 +11,8 @@
     "notes": "テスト用の補足",
     "lat": 34.31,
     "lng": 134.18,
-    "status": "open",
+    "latLngSource": "現地取得",
+    "status": "営業",
     "openedOn": "2003",
     "sources": "公式サイト, 「さぬき市史」2010年版"
   },
@@ -21,7 +22,7 @@
     "postalCode": "102-0082",
     "address": "東京都千代田区一番町1-1",
     "category": "博物館",
-    "status": "moved",
+    "status": "移転",
     "movedToId": "3",
     "closedOn": "2020-03-31"
   },
@@ -31,7 +32,7 @@
     "postalCode": "106-0032",
     "address": "東京都港区六本木1-1-1",
     "category": "博物館",
-    "status": "open",
+    "status": "営業",
     "openedOn": "2020-04-01"
   },
   {
@@ -40,7 +41,7 @@
     "postalCode": "540-0001",
     "address": "大阪府大阪市中央区1-1-1",
     "category": "資料館",
-    "status": "closed",
+    "status": "終業",
     "openedOn": "明治時代",
     "closedOn": "昭和初期"
   }

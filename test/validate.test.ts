@@ -71,13 +71,18 @@ describe("mges.schema.json", () => {
     expect(validate(data)).toBe(false);
   });
 
-  it("status=movedでmovedToIdが無いエントリを拒否する", () => {
+  it("status=移転でmovedToIdが無いエントリを拒否する", () => {
     const data = loadFixture("invalid-moved-without-movedtoid.json");
     expect(validate(data)).toBe(false);
   });
 
-  it("status!=movedなのにmovedToIdを持つエントリを拒否する", () => {
+  it("status!=移転なのにmovedToIdを持つエントリを拒否する", () => {
     const data = loadFixture("invalid-movedtoid-without-moved.json");
+    expect(validate(data)).toBe(false);
+  });
+
+  it("latLngSourceのみでlat/lngが無いエントリを拒否する", () => {
+    const data = loadFixture("invalid-latlngsource-without-latlng.json");
     expect(validate(data)).toBe(false);
   });
 });

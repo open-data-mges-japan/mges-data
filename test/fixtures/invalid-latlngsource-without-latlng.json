@@ -1,9 +1,11 @@
 [
   {
     "id": "1",
+    "name": "latLngSourceだけありlat/lngが無い",
     "postalCode": "102-0082",
     "address": "東京都千代田区1-1",
     "category": "博物館",
-    "status": "営業"
+    "status": "営業",
+    "latLngSource": "推定値"
   }
 ]

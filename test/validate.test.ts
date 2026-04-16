@@ -71,9 +71,9 @@ describe("mges.schema.json", () => {
     expect(validate(data)).toBe(false);
   });
 
-  it("status=移転でmovedToIdが無いエントリを拒否する", () => {
+  it("status=移転でmovedToIdが無いエントリを受け入れる", () => {
     const data = loadFixture("invalid-moved-without-movedtoid.json");
-    expect(validate(data)).toBe(false);
+    expect(validate(data)).toBe(true);
   });
 
   it("status!=移転なのにmovedToIdを持つエントリを拒否する", () => {

@@ -75,7 +75,7 @@
       "movedToId": {
         "type": "string",
         "pattern": "^[1-9][0-9]*$",
-        "description": "移転先のid。移転(物理的立地の変更)は別レコードとして管理する。statusがmovedの場合のみ指定可能、かつその場合は必須"
+        "description": "移転先のid。移転(物理的立地の変更)は別レコードとして管理する。statusが移転の場合のみ指定可能。移転先が判明している場合に設定する"
       },
       "openedOn": {
         "type": "string",
@@ -102,9 +102,7 @@
       "properties": { "status": { "const": "移転" } },
       "required": ["status"]
     },
-    "then": {
-      "required": ["movedToId"]
-    },
+    "then": {},
     "else": {
       "not": { "required": ["movedToId"] }
     }

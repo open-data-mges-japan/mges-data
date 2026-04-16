@@ -62,10 +62,15 @@
         "type": "number",
         "description": "経度(WGS84)"
       },
+      "latLngSource": {
+        "type": "string",
+        "enum": ["現地取得", "推定値"],
+        "description": "lat/lngの出典。現地取得は人力で現地で取得した値、推定値は住所文字列からジオコーダで推定した暫定値(町丁目代表点レベル)"
+      },
       "status": {
         "type": "string",
-        "enum": ["open", "closed", "moved", "unknown"],
-        "description": "営業ステータス。unknownは現状を把握できない場合に使う"
+        "enum": ["営業", "終業", "移転", "不明"],
+        "description": "営業ステータス。不明は現状を把握できない場合に使う"
       },
       "movedToId": {
         "type": "string",
@@ -90,10 +95,11 @@
     },
     "dependencies": {
       "lat": ["lng"],
-      "lng": ["lat"]
+      "lng": ["lat"],
+      "latLngSource": ["lat", "lng"]
     },
     "if": {
-      "properties": { "status": { "const": "moved" } },
+      "properties": { "status": { "const": "移転" } },
       "required": ["status"]
     },
     "then": {

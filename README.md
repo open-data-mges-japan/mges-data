@@ -17,8 +17,8 @@
 [mges.csv](./mges.csv)の`lat`/`lng`フィールドのうち、`latLngSource`が「推定値」のデータのライセンスは[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ja)です。
 当該フィールドを利用する場合は、[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ja)のデータとして扱ってください。
 
-- これらのデータは、住所文字列をもとに、[`@geolonia/normalize-japanese-addresses`](https://github.com/geolonia/normalize-japanese-addresses)(株式会社Geolonia)を使用して取得しています
-- [`@geolonia/normalize-japanese-addresses`](https://github.com/geolonia/normalize-japanese-addresses)は[`japanese-addresses-v2`](https://github.com/geolonia/japanese-addresses-v2)(株式会社Geolonia)から住所データを取得しています
+- これらのデータは、住所文字列をもとに、[`normalize-japanese-addresses`](https://github.com/geolonia/normalize-japanese-addresses)(株式会社Geolonia)を使用して取得しています
+- [`normalize-japanese-addresses`](https://github.com/geolonia/normalize-japanese-addresses)は[`japanese-addresses-v2`](https://github.com/geolonia/japanese-addresses-v2)(株式会社Geolonia)から住所データを取得しています
 - [`japanese-addresses-v2`](https://github.com/geolonia/japanese-addresses-v2)は[アドレス・ベース・レジストリ](https://www.digital.go.jp/policies/base_registry_address)(デジタル庁)をもとに作成されています
 
 ## バージョン管理
@@ -47,4 +47,11 @@ pnpm install
 pnpm check
 ```
 
-`pnpm check`はtypecheck(`pnpm typecheck`)とschema検証(`pnpm validate`)と単体テスト(`pnpm test`)を順に実行します。
+`pnpm check`は以下を順に実行します。
+
+- typecheck: `pnpm typecheck`
+- 空欄lat/lngの自動取得: `tsx scripts/geocode.ts --strict`(取得失敗または空欄残存で exit 1)
+- schema検証とビジネスルール検証: `pnpm validate`
+- 単体テスト: `pnpm test`
+
+ジオコーディングのみ単独で実行したい場合は`pnpm geocode`(非strict。手で徐々に埋めるフロー用)を使います。

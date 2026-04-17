@@ -6,7 +6,7 @@
 
 ## データの利用
 
-[mges.csv](./mges.csv)をそのまま利用できます。CSVファイルはExcel、Googleスプレッドシート等で開くことが可能です。
+[`mges.csv`](./mges.csv)をそのまま利用できます。CSVファイルはExcel、Googleスプレッドシート等で開くことが可能です。
 
 ## ライセンス
 
@@ -14,7 +14,7 @@
 
 ### ライセンスの例外
 
-[mges.csv](./mges.csv)の`lat`/`lng`フィールドのうち、`latLngSource`が「推定値」のデータのライセンスは[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ja)です。
+[`mges.csv`](./mges.csv)の`lat`/`lng`フィールドのうち、`latLngSource`が「推定値」のデータのライセンスは[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ja)です。
 当該フィールドを利用する場合は、[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ja)のデータとして扱ってください。
 
 - これらのデータは、住所文字列をもとに、[`normalize-japanese-addresses`](https://github.com/geolonia/normalize-japanese-addresses)(株式会社Geolonia)を使用して取得しています

@@ -6,9 +6,10 @@
   "type": "module",
   "scripts": {
     "validate": "tsx scripts/validate.ts",
+    "geocode": "tsx scripts/geocode.ts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "check": "pnpm typecheck && pnpm validate && pnpm test"
+    "check": "pnpm typecheck && tsx scripts/geocode.ts --strict && pnpm validate && pnpm test"
   },
   "devDependencies": {
     "@geolonia/normalize-japanese-addresses": "^3.1.3",

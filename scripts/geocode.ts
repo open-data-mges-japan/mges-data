@@ -6,6 +6,7 @@
  * @example
  * pnpm tsx scripts/geocode.ts            # 実行して上書き
  * pnpm tsx scripts/geocode.ts --dry-run  # 差分のみ表示(書き込みなし)
+ * pnpm tsx scripts/geocode.ts --strict   # 取得失敗や空欄残存でexit 1(pnpm checkで使用)
  */
 
 import { readFileSync, writeFileSync } from "node:fs";
@@ -16,6 +17,7 @@ const MIN_LEVEL = 3;
 const DELAY_MS = 200;
 
 const dryRun = process.argv.includes("--dry-run");
+const strict = process.argv.includes("--strict");
 const csvPath = resolve(process.cwd(), "mges.csv");
 
 const raw = readFileSync(csvPath, "utf-8");
@@ -76,6 +78,7 @@ if ([idIdx, addressIdx, latIdx, lngIdx, sourceIdx].includes(-1)) {
 
 let updated = 0;
 let skipped = 0;
+let errored = 0;
 
 for (let i = 0; i < dataRows.length; i++) {
   const row = dataRows[i];
@@ -88,7 +91,15 @@ for (let i = 0; i < dataRows.length; i++) {
     continue;
   }
 
-  const result = await normalize(address);
+  let result;
+  try {
+    result = await normalize(address);
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e);
+    console.error(`[error] id=${id}: 住所正規化でエラー (${address}): ${msg}`);
+    errored++;
+    continue;
+  }
 
   if (!result.point || result.level < MIN_LEVEL) {
     console.warn(`[warn] id=${id}: level=${result.level}のため採用しない (${address})`);
@@ -119,4 +130,13 @@ if (!dryRun && updated > 0) {
   writeFileSync(csvPath, (hasBom ? "\ufeff" : "") + csvOut, "utf-8");
 }
 
-console.log(`[info] 完了: ${updated}件更新, ${skipped}件スキップ${dryRun ? " (dry-run)" : ""}`);
+const remaining = dataRows.filter(r => r[latIdx] === "" || r[lngIdx] === "").length;
+
+console.log(`[info] 完了: ${updated}件更新, ${skipped}件スキップ, ${errored}件エラー${dryRun ? " (dry-run)" : ""}`);
+
+if (strict) {
+  if (errored > 0 || skipped > 0 || remaining > 0) {
+    console.error(`[error] strictモード: 取得失敗または空欄残存 (error=${errored}, skip=${skipped}, remaining=${remaining})`);
+    process.exit(1);
+  }
+}

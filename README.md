@@ -12,7 +12,18 @@ CSVはExcel、Googleスプレッドシート等のソフトで開くことが可
 
 ## ライセンス
 
-リポジトリ内の全てのファイル(データ、スキーマ、検証スクリプト、ドキュメント、設定ファイル等)を [CC0 1.0 Universal](./LICENSE) で公開しています。
+リポジトリ内のファイル(`mges.csv`、スキーマ、検証スクリプト、ドキュメント、設定ファイル等)は、下記の例外を除き[CC0 1.0 Universal](./LICENSE)で公開しています。
+
+- 例外: `mges.csv`の`lat`/`lng`フィールドのうち`latLngSource`が「推定値」のデータは第三者のCC BY 4.0データに由来します。この部分はCC0ではなくCC BY 4.0として扱ってください(詳細は下記)。
+
+### 緯度経度の推定値に含まれる第三者データの帰属
+
+`lat`/`lng`フィールドのうち`latLngSource`が「推定値」のデータは、[`@geolonia/normalize-japanese-addresses`](https://github.com/geolonia/normalize-japanese-addresses)(MIT)を使って住所文字列から取得しています。同ライブラリが参照する住所データの出典は以下のとおりです。
+
+- [`japanese-addresses-v2`](https://github.com/geolonia/japanese-addresses-v2)(Geolonia, Inc.)/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+- 上記データはデジタル庁「[アドレス・ベース・レジストリ](https://www.digital.go.jp/policies/base_registry_address)」住居表示住所・住居マスターデータセットをもとに作成されたものです
+
+当該フィールドを利用する場合は上記の帰属表示を保持してください。
 
 ## バージョン管理
 

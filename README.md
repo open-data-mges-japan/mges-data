@@ -49,9 +49,7 @@ pnpm check
 
 `pnpm check`は以下を順に実行します。
 
-- typecheck: `pnpm typecheck`
-- 空欄lat/lngの自動取得: `tsx scripts/geocode.ts --strict`(取得失敗または空欄残存で exit 1)
-- schema検証とビジネスルール検証: `pnpm validate`
-- 単体テスト: `pnpm test`
-
-ジオコーディングのみ単独で実行したい場合は`pnpm geocode`(非strict。手で徐々に埋めるフロー用)を使います。
+- `pnpm typecheck`: typecheck
+- `tsx scripts/geocode.ts --strict`: 空欄lat/lngの自動取得。取得失敗または空欄残存で exit 1
+- `pnpm validate`: schema検証とビジネスルール検証
+- `pnpm test`: 単体テスト

@@ -77,4 +77,12 @@ describe("parseCsvFile", () => {
     const result = parseCsvFile(resolve(fixturesDir, "edge-cases.csv"));
     expect(result[1].name).toBe("改行を\n含む名称");
   });
+
+  it("列数がヘッダと一致しない行があればエラーを投げる", () => {
+    // relatedEntitiesに"A市, B団体"をクォートせず書いたケース。
+    // 静かに切り捨てるとフィールドがズレたまま通るため明示的に検出する。
+    expect(() => parseCsvFile(resolve(fixturesDir, "column-mismatch.csv"))).toThrow(
+      /CSV行2の列数がヘッダと一致しません: expected 17, got 18/,
+    );
+  });
 });

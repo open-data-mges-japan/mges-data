@@ -14,7 +14,13 @@ import { checkBusinessRules, type Entry } from "./business-rules";
 const dataPath = resolve(process.cwd(), "mges.csv");
 const schemaPath = resolve(process.cwd(), "mges.schema.json");
 
-const entries = parseCsvFile(dataPath);
+let entries: Record<string, unknown>[];
+try {
+  entries = parseCsvFile(dataPath);
+} catch (e) {
+  console.error(`[error] ${e instanceof Error ? e.message : String(e)}`);
+  process.exit(1);
+}
 const schema = JSON.parse(readFileSync(schemaPath, "utf-8"));
 
 const ajv = new Ajv({ allErrors: true });

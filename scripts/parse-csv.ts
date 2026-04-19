@@ -117,10 +117,17 @@ export function parseCsvFile(path: string): Record<string, unknown>[] {
   const rows = parseCsvText(content);
   if (rows.length === 0) return [];
   const [header, ...dataRows] = rows;
-  return dataRows.map((row) => {
+  return dataRows.map((row, index) => {
+    if (row.length !== header.length) {
+      // 列数不一致は静かに切り捨てるとフィールドのズレを見逃してschema検証を
+      // すり抜けるため、ここで明示的にエラーを投げる(例: クォート漏れのカンマ)
+      throw new Error(
+        `CSV行${index + 2}の列数がヘッダと一致しません: expected ${header.length}, got ${row.length}`,
+      );
+    }
     const obj: Record<string, string> = {};
     for (let i = 0; i < header.length; i++) {
-      obj[header[i]] = row[i] ?? "";
+      obj[header[i]] = row[i];
     }
     return convertRow(obj);
   });

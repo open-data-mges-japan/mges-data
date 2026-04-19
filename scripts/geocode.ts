@@ -16,6 +16,12 @@ import { normalize } from "@geolonia/normalize-japanese-addresses";
 const MIN_LEVEL = 3;
 const DELAY_MS = 200;
 
+const LEVEL_LABEL: Record<number, string> = {
+  0: "都道府県も特定できなかった",
+  1: "都道府県までしか特定できなかった",
+  2: "市区町村までしか特定できなかった",
+};
+
 const dryRun = process.argv.includes("--dry-run");
 const strict = process.argv.includes("--strict");
 const csvPath = resolve(process.cwd(), "mges.csv");
@@ -102,7 +108,8 @@ for (let i = 0; i < dataRows.length; i++) {
   }
 
   if (!result.point || result.level < MIN_LEVEL) {
-    console.warn(`[warn] id=${id}: level=${result.level}のため採用しない (${address})`);
+    const reason = LEVEL_LABEL[result.level] ?? `level=${result.level}`;
+    console.warn(`[warn] id=${id}: ${reason}ため採用しない (町丁目レベル(level>=${MIN_LEVEL})が必要): ${address}`);
     skipped++;
     continue;
   }
@@ -136,7 +143,11 @@ console.log(`[info] 完了: ${updated}件更新, ${skipped}件スキップ, ${er
 
 if (strict) {
   if (errored > 0 || skipped > 0 || remaining > 0) {
-    console.error(`[error] strictモード: 取得失敗または空欄残存 (error=${errored}, skip=${skipped}, remaining=${remaining})`);
+    console.error(`[error] strictモード: 緯度経度を埋められなかったエントリがあります`);
+    console.error(`[error] - 取得エラー: ${errored}件 (住所正規化で例外発生)`);
+    console.error(`[error] - 採用見送り: ${skipped}件 (町丁目レベル(level>=${MIN_LEVEL})まで特定できなかった、上記[warn]参照)`);
+    console.error(`[error] - 空欄残存: ${remaining}件 (lat/lngが空欄のまま)`);
+    console.error(`[error] 対処: 該当エントリのlat/lng/latLngSourceを手動で埋めてください`);
     process.exit(1);
   }
 }

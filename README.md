@@ -50,6 +50,6 @@ pnpm check
 `pnpm check`は以下を順に実行します。
 
 - `pnpm typecheck`: typecheck
-- `tsx scripts/geocode.ts --strict`: 空欄lat/lngの自動取得。取得失敗または空欄残存で exit 1
+- `pnpm geocode -- --strict`: 空欄lat/lngの自動取得。取得失敗または空欄残存で exit 1
 - `pnpm validate`: schema検証とビジネスルール検証
 - `pnpm test`: 単体テスト
